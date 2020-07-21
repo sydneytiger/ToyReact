@@ -32,6 +32,9 @@ class ElementWrapper {
   mountTo(range) {
     range.deleteContents();
     range.insertNode(this.root);
+    if(this.root.componentDidMount 
+      && typeof this.root.componentDidMount === 'function')
+      this.root.componentDidMount();
   }
 }
 
@@ -59,7 +62,6 @@ export class Component {
   }
 
   update() {
-    // componenetWillMount
     const placeHolder = document.createComment('placeHolder');
     let range = document.createRange();
     range.setStart(this.range.endContainer, this.range.endOffset);
@@ -69,8 +71,6 @@ export class Component {
     this.range.deleteContents();
     let vdom = this.render();
     vdom.mountTo(this.range);
-
-    // componenentDidMount
   }
 
   setAttribute(name, value) {

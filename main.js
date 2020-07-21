@@ -22,6 +22,10 @@ class Board extends Component {
     return <Square value={i} />;
   }
 
+  componentDidMount(){
+    console.log('componentDidMount');
+  }
+
   render() {
     return (
       <div>
