@@ -100,7 +100,7 @@ export default class Component {
   setState(state) {
     const merge = (oldState, newState) => {
       for(let p in newState) {
-        if(typeof newState[p] === 'object' && newState !== null) {
+        if(typeof newState[p] === 'object' && newState[p] !== null) {
           if(typeof oldState[p] !== 'object') {
             if(newState[p] instanceof Array) {
               oldState[p] = []
